@@ -1,6 +1,6 @@
 package com.egh.springbootmall.model;
 
-import com.egh.springbootmall.ProductCategory;
+import com.egh.springbootmall.constant.ProductCategory;
 
 import java.util.Date;
 

@@ -1,6 +1,6 @@
 package com.egh.springbootmall.rowmapper;
 
-import com.egh.springbootmall.ProductCategory;
+import com.egh.springbootmall.constant.ProductCategory;
 import com.egh.springbootmall.model.Product;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;

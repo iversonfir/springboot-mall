@@ -1,4 +1,4 @@
-package com.egh.springbootmall;
+package com.egh.springbootmall.constant;
 
 public enum ProductCategory {
     FOOD, CAR, E_BOOK
