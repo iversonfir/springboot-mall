@@ -1,5 +1,6 @@
 package com.egh.springbootmall.rowmapper;
 
+import com.egh.springbootmall.ProductCategory;
 import com.egh.springbootmall.model.Product;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,7 @@ public class ProductRowMapper implements RowMapper<Product> {
         product.setPrice(rs.getInt("price"));
         product.setStock(rs.getInt("stock"));
         product.setProduct_name(rs.getString("product_name"));
-        product.setCategory(rs.getString("category"));
+        product.setCategory(ProductCategory.valueOf(rs.getString("category")));
         product.setImage_url(rs.getString("image_url"));
         product.setDescription(rs.getString("description"));
         product.setCreated_date(rs.getTimestamp("created_date"));
