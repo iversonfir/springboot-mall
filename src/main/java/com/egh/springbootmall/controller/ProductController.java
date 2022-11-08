@@ -1,20 +1,21 @@
 package com.egh.springbootmall.controller;
 
+import com.egh.springbootmall.dto.ProductRequest;
 import com.egh.springbootmall.model.Product;
 import com.egh.springbootmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping("/products/{productId}")
+    @GetMapping("/products/{productId}")
     public ResponseEntity<Product> getProduct(@PathVariable Integer productId) {
         Product product = productService.getProductById(productId);
         if (product == null) {
@@ -22,5 +23,12 @@ public class ProductController {
         } else {
             return ResponseEntity.status(HttpStatus.OK).body(product);
         }
+    }
+
+    @PostMapping("/products")
+    public ResponseEntity<Product> createProduct(@RequestBody @Valid ProductRequest productRequest) {
+        Integer productId = productService.createProduct(productRequest);
+        Product product = productService.getProductById(productId);
+        return ResponseEntity.status(HttpStatus.OK).body(product);
     }
 }
