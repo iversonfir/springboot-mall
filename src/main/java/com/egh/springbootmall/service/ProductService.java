@@ -1,5 +1,6 @@
 package com.egh.springbootmall.service;
 
+import com.egh.springbootmall.constant.ProductCategory;
 import com.egh.springbootmall.dto.ProductRequest;
 import com.egh.springbootmall.model.Product;
 
@@ -15,5 +16,5 @@ public interface ProductService
 
     void deleteProduct(Integer productId);
 
-    List<Product> getProducts();
+    List<Product> getProducts(ProductCategory category, String search);
 }

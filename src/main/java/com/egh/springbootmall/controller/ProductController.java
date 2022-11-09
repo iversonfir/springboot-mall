@@ -1,5 +1,6 @@
 package com.egh.springbootmall.controller;
 
+import com.egh.springbootmall.constant.ProductCategory;
 import com.egh.springbootmall.dto.ProductRequest;
 import com.egh.springbootmall.model.Product;
 import com.egh.springbootmall.service.ProductService;
@@ -23,11 +24,13 @@ public class ProductController
      * 就我的理解就是
      * getProducts 是盒子，永遠都在
      * getProduct 是單一元素，所以要判斷資料存不存在
-     * */
+     */
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getProducts()
+    public ResponseEntity<List<Product>> getProducts(
+            @RequestParam(required = false) ProductCategory category,
+            @RequestParam(required = false) String search)
     {
-        List<Product> products = productService.getProducts();
+        List<Product> products = productService.getProducts(category, search);
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
 

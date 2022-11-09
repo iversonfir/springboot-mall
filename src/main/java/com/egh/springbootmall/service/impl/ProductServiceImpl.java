@@ -1,5 +1,6 @@
 package com.egh.springbootmall.service.impl;
 
+import com.egh.springbootmall.constant.ProductCategory;
 import com.egh.springbootmall.dao.ProductDao;
 import com.egh.springbootmall.dto.ProductRequest;
 import com.egh.springbootmall.model.Product;
@@ -40,8 +41,8 @@ public class ProductServiceImpl implements ProductService
     }
 
     @Override
-    public List<Product> getProducts()
+    public List<Product> getProducts(ProductCategory category, String search)
     {
-        return productDao.getProducts();
+        return productDao.getProducts(category, search);
     }
 }
