@@ -1,6 +1,7 @@
 package com.egh.springbootmall.dao;
 
 import com.egh.springbootmall.constant.ProductCategory;
+import com.egh.springbootmall.dto.ProductQueryParams;
 import com.egh.springbootmall.dto.ProductRequest;
 import com.egh.springbootmall.model.Product;
 
@@ -16,5 +17,5 @@ public interface ProductDao
 
     void deleteProduct(Integer productId);
 
-    List<Product> getProducts(ProductCategory category, String search);
+    List<Product> getProducts(ProductQueryParams productQueryParams);
 }
