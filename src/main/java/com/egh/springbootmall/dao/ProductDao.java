@@ -3,7 +3,8 @@ package com.egh.springbootmall.dao;
 import com.egh.springbootmall.dto.ProductRequest;
 import com.egh.springbootmall.model.Product;
 
-public interface ProductDao {
+public interface ProductDao
+{
     Product getProductById(int productId);
 
     Integer createProduct(ProductRequest productRequest);

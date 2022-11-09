@@ -4,7 +4,8 @@ import com.egh.springbootmall.constant.ProductCategory;
 
 import javax.validation.constraints.NotNull;
 
-public class ProductRequest {
+public class ProductRequest
+{
     @NotNull
     private Integer price;
     @NotNull
@@ -18,51 +19,63 @@ public class ProductRequest {
     private String description;
 
 
-    public Integer getPrice() {
+    public Integer getPrice()
+    {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Integer price)
+    {
         this.price = price;
     }
 
-    public Integer getStock() {
+    public Integer getStock()
+    {
         return stock;
     }
 
-    public void setStock(Integer stock) {
+    public void setStock(Integer stock)
+    {
         this.stock = stock;
     }
 
-    public String getProductName() {
+    public String getProductName()
+    {
         return productName;
     }
 
-    public void setProductName(String productName) {
+    public void setProductName(String productName)
+    {
         this.productName = productName;
     }
 
-    public ProductCategory getCategory() {
+    public ProductCategory getCategory()
+    {
         return category;
     }
 
-    public void setCategory(ProductCategory category) {
+    public void setCategory(ProductCategory category)
+    {
         this.category = category;
     }
 
-    public String getImageUrl() {
+    public String getImageUrl()
+    {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public void setImageUrl(String imageUrl)
+    {
         this.imageUrl = imageUrl;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 }

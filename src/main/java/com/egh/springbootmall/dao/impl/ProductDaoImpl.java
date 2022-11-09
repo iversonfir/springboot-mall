@@ -17,13 +17,15 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class ProductDaoImpl implements ProductDao {
+public class ProductDaoImpl implements ProductDao
+{
 
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Override
-    public Product getProductById(int productId) {
+    public Product getProductById(int productId)
+    {
         String sql = "select product_id,product_name, category, image_url, price," +
                 " stock, description, created_date, last_modified_date " +
                 "from product where product_id= :product_id";
@@ -34,7 +36,8 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public Integer createProduct(ProductRequest productRequest) {
+    public Integer createProduct(ProductRequest productRequest)
+    {
 
         String sql = "INSERT INTO product(product_name, category, image_url, price, stock, " +
                 "description, created_date, last_modified_date) " +
@@ -63,7 +66,8 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public void updateProduct(Integer productId, ProductRequest productRequest) {
+    public void updateProduct(Integer productId, ProductRequest productRequest)
+    {
         String sql = "UPDATE product SET product_name=:productName, category=:category, image_url=:imageUrl, price=:price, stock=:stock," +
                 "description=:description, last_modified_date=:lastModifiedDate" +
                 " WHERE product_id=:productId";
@@ -81,7 +85,8 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public void deleteProduct(Integer productId) {
+    public void deleteProduct(Integer productId)
+    {
         String sql = "DELETE FROM product WHERE product_id=:productId";
         HashMap<String, Object> map = new HashMap<>();
         map.put("productId", productId);

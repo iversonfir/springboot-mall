@@ -4,7 +4,8 @@ import com.egh.springbootmall.constant.ProductCategory;
 
 import java.util.Date;
 
-public class Product {
+public class Product
+{
     private Integer productId;
     private Integer price;
     private Integer stock;
@@ -15,75 +16,93 @@ public class Product {
     private Date createdDate;
     private Date lastModifiedDate;
 
-    public Integer getProductId() {
+    public Integer getProductId()
+    {
         return productId;
     }
 
-    public void setProductId(Integer productId) {
+    public void setProductId(Integer productId)
+    {
         this.productId = productId;
     }
 
-    public Integer getPrice() {
+    public Integer getPrice()
+    {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Integer price)
+    {
         this.price = price;
     }
 
-    public Integer getStock() {
+    public Integer getStock()
+    {
         return stock;
     }
 
-    public void setStock(Integer stock) {
+    public void setStock(Integer stock)
+    {
         this.stock = stock;
     }
 
-    public String getProductName() {
+    public String getProductName()
+    {
         return productName;
     }
 
-    public void setProductName(String productName) {
+    public void setProductName(String productName)
+    {
         this.productName = productName;
     }
 
-    public ProductCategory getCategory() {
+    public ProductCategory getCategory()
+    {
         return category;
     }
 
-    public void setCategory(ProductCategory category) {
+    public void setCategory(ProductCategory category)
+    {
         this.category = category;
     }
 
-    public String getImageUrl() {
+    public String getImageUrl()
+    {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public void setImageUrl(String imageUrl)
+    {
         this.imageUrl = imageUrl;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
-    public Date getCreatedDate() {
+    public Date getCreatedDate()
+    {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(Date createdDate)
+    {
         this.createdDate = createdDate;
     }
 
-    public Date getLastModifiedDate() {
+    public Date getLastModifiedDate()
+    {
         return lastModifiedDate;
     }
 
-    public void setLastModifiedDate(Date lastModifiedDate) {
+    public void setLastModifiedDate(Date lastModifiedDate)
+    {
         this.lastModifiedDate = lastModifiedDate;
     }
 }
