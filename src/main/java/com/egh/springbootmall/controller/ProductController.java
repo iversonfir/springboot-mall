@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class ProductController
@@ -16,6 +17,19 @@ public class ProductController
 
     @Autowired
     private ProductService productService;
+
+    /**
+     * getProducts 與 getProduct 實作不判斷 null 原因，Restful Api 定義的差別
+     * 就我的理解就是
+     * getProducts 是盒子，永遠都在
+     * getProduct 是單一元素，所以要判斷資料存不存在
+     * */
+    @GetMapping("/products")
+    public ResponseEntity<List<Product>> getProducts()
+    {
+        List<Product> products = productService.getProducts();
+        return ResponseEntity.status(HttpStatus.OK).body(products);
+    }
 
     @GetMapping("/products/{productId}")
     public ResponseEntity<Product> getProduct(@PathVariable Integer productId)

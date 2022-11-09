@@ -3,6 +3,8 @@ package com.egh.springbootmall.dao;
 import com.egh.springbootmall.dto.ProductRequest;
 import com.egh.springbootmall.model.Product;
 
+import java.util.List;
+
 public interface ProductDao
 {
     Product getProductById(int productId);
@@ -12,4 +14,5 @@ public interface ProductDao
     void updateProduct(Integer productId, ProductRequest productRequest);
 
     void deleteProduct(Integer productId);
+    List<Product> getProducts();
 }
