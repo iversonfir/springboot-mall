@@ -98,14 +98,14 @@ public class ProductDaoImpl implements ProductDao
     @Override
     public List<Product> getProducts(ProductQueryParams productQueryParams)
     {
-        String sql = "SELECT product_id,product_name, category, image_url, price, " +
-                "stock, description, created_date, last_modified_date " +
-                "FROM product " +
-                "WHERE 1=1 ";
+        String sql = " SELECT product_id,product_name, category, image_url, price, " +
+                " stock, description, created_date, last_modified_date " +
+                " FROM product " +
+                " WHERE 1=1 ";
         HashMap<String, Object> map = new HashMap<>();
         if (productQueryParams.getCategory() != null)
         {
-            sql += "AND category=:category ";
+            sql += " AND category=:category ";
             map.put("category", productQueryParams.getCategory().name());
         }
         if ( productQueryParams.getSearch() != null)
@@ -113,6 +113,7 @@ public class ProductDaoImpl implements ProductDao
             sql += "AND product_name like :search ";
             map.put("search", "%" + productQueryParams.getSearch() + "%");
         }
+        sql+=" ORDER BY " +productQueryParams.getOrderBY()+" "+ productQueryParams.getOrder();
         return namedParameterJdbcTemplate.query(sql, map, new ProductRowMapper());
     }
 }
