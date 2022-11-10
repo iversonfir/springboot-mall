@@ -5,6 +5,7 @@ import com.egh.springbootmall.dto.ProductQueryParams;
 import com.egh.springbootmall.dto.ProductRequest;
 import com.egh.springbootmall.model.Product;
 import com.egh.springbootmall.service.ProductService;
+import com.egh.springbootmall.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class ProductController
      * getProduct 是單一元素，所以要判斷資料存不存在
      */
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getProducts(
+    public ResponseEntity<Page<Product>> getProducts(
             @RequestParam(required = false) ProductCategory category,
             @RequestParam(required = false) String search,
             @RequestParam(defaultValue = "created_date") String orderBy,
@@ -55,7 +56,15 @@ public class ProductController
         productQueryParams.setOffset(offset);
 
         List<Product> products = productService.getProducts(productQueryParams);
-        return ResponseEntity.status(HttpStatus.OK).body(products);
+        Integer total=productService.countProduct(productQueryParams);
+
+        Page<Product> page = new Page<>();
+        page.setLimit(limit);
+        page.setOffset(offset);
+        page.setTotal(total);
+        page.setResult(products);
+
+        return ResponseEntity.status(HttpStatus.OK).body(page);
     }
 
     @GetMapping("/products/{productId}")
