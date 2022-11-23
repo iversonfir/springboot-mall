@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.server.ResponseStatusException;
 
 @Component
@@ -47,12 +48,13 @@ public class UserServiceImpl implements UserService
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
-        if (userRegisterRequest.getPassword().equals(user.getPassword()))
+        String hashPassword = DigestUtils.md5DigestAsHex(userRegisterRequest.getPassword().getBytes());
+        if (hashPassword.equals(user.getPassword()))
         {
             return user;
         }
 
-        log.warn("密碼不正確 ");
+        log.warn("此帳號 {} , 密碼不正確   ", userRegisterRequest.getEmail());
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 }

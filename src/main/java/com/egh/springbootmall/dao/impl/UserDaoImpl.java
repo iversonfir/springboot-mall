@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.DigestUtils;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -41,7 +42,9 @@ public class UserDaoImpl implements UserDao
         HashMap<String, Object> map = new HashMap<>();
 
         map.put("email",userRegisterRequest.getEmail());
-        map.put("password",userRegisterRequest.getPassword());
+
+        String hashPassword = DigestUtils.md5DigestAsHex(userRegisterRequest.getPassword().getBytes());
+        map.put("password",hashPassword);
 
         Date now = new Date();
         map.put("created_date", now);
