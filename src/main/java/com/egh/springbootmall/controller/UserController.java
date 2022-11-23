@@ -24,4 +24,14 @@ public class UserController
         User user = userService.getUserById(userId);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
+
+    @PostMapping("/users/login")
+    public ResponseEntity<User> login(@RequestBody @Validated UserRegisterRequest userRegisterRequest)
+    {
+        User user =userService.login(userRegisterRequest);
+        if(user==null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
 }

@@ -28,11 +28,31 @@ public class UserServiceImpl implements UserService
     @Override
     public Integer register(UserRegisterRequest userRegisterRequest)
     {
-        User user=userDao.getUserByEmail(userRegisterRequest.getEmail());
-        if(user!=null){
+        User user = userDao.getUserByEmail(userRegisterRequest.getEmail());
+        if (user != null)
+        {
             log.warn("該 email {} 已經被註冊", userRegisterRequest.getEmail());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         return userDao.createUser(userRegisterRequest);
+    }
+
+    @Override
+    public User login(UserRegisterRequest userRegisterRequest)
+    {
+        User user = userDao.getUserByEmail(userRegisterRequest.getEmail());
+        if (user == null)
+        {
+            log.warn("查無此 email {} ", userRegisterRequest.getEmail());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+        if (userRegisterRequest.getPassword().equals(user.getPassword()))
+        {
+            return user;
+        }
+
+        log.warn("密碼不正確 ");
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 }
